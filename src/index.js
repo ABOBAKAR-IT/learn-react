@@ -1,13 +1,8 @@
 import ReactDOM from "react-dom";
 import App from "./App";
-import Par from "./Par";
+import Pat from "./Pat";
 
-let data= (
-    <ol>
-        <li>Abobakar</li>
-        <li>ahmad</li>
-        <li>shahzad</li>
-    </ol>
-)
-ReactDOM.render( < App name={data} / > , document.getElementById("root"));
+
+ReactDOM.render( < App / > , document.getElementById("root"));
+
 

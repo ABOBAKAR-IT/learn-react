@@ -1,10 +1,15 @@
+import Pat from "./Pat";
+
 function App(data){
 
     return (
     <>
-    <h1>Rana Abobakar </h1>
-    <p> kya hal ha</p>
-    <>{data.name}</>
+    <h1>Hello World </h1>
+    
+    <>
+    <Pat name="monkey" name1="cat" name2="dog" />
+
+    </>
 
     </>
     )
