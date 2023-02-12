@@ -5,7 +5,7 @@ function App(data) {
     <>
       <h1> Hello World </h1>
       <>
-        <Pat name="monkey" name1="cat" name2="dog" />
+        <Pat/>
       </>
     </>
   );

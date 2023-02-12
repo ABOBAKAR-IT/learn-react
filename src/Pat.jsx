@@ -1,13 +1,14 @@
-import Cat from "./cat";
-const Pat=(props)=>{
+import { useState,React } from "react";
+const Pat=()=>{
+    let [count,setcount]= useState(0);
+    function display(){
+     setcount(count+1);
+    }
     return(
-        <div>
-            <h1>Pat</h1> 
-            <p>Pant 1 {props.name}</p>
-            <p>Pant 2 {props.name1}</p>
-            <p>Pant 2 {props.name2}</p>
-<Cat name={props.name} />
-        </div>
+    <div>
+        <h1>Button clicked {count} time</h1>
+        <button onClick={display}>Click me</button>
+    </div>
     )
 }
 export default Pat;
