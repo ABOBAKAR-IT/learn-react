@@ -1,6 +1,9 @@
-import { useState,React } from "react";
+import { useState,React,useEffect } from "react";
 const Pat=()=>{
     let [count,setcount]= useState(0);
+    useEffect(()=>{ // useEffect work when page load and any state update
+console.log("rana")
+    })// you can specify only useEffect work on particular state write state name in  bracket like this [data]
     function display(){
         
      setcount(count+1);
