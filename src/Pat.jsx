@@ -3,7 +3,7 @@ const Pat=()=>{
     let [count,setcount]= useState(0);
     useEffect(()=>{ // useEffect work when page load and any state update
 console.log("rana")
-    })// you can specify only useEffect work on particular state write state name in  bracket like this [data]
+    },[])// you can specify only useEffect work on particular state update. write state name in  bracket like this [data]. if bracket [] empty useEffect not work on state update.
     function display(){
         
      setcount(count+1);
