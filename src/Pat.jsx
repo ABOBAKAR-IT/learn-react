@@ -1,23 +1,24 @@
-import { useState,React,useEffect } from "react";
+import { useState,React,useRef } from "react";
 const Pat=()=>{
-    let [count,setcount]= useState(0);
-    useEffect(()=>{ // useEffect work when page load and any state update
-console.log("rana")
-    },[])// you can specify only useEffect work on particular state update. write state name in  bracket like this [data]. if bracket [] empty useEffect not work on state update.
-    function display(){
-        
-     setcount(count+1);
-    }
-    function decrement(){
-        if(count>0)
-        setcount(count-1)
-    }
+    const [name,setName]=useState("inter name");
+   const useElement=useRef();//useFer used for DOM manipulate 
+
+  function reset(){
+      setName("")
+    useElement.current.focus();
+  }
+
+   function changecolor(){
+useElement.current.style.color="red";
+   }
     return(
-    <div>
-        <h1>Button clicked {count} time</h1>
-        <button onClick={display}>increment</button>
-        <button onClick={decrement}>Decrement</button>
-    </div>
+        <>
+    <h1>Learning useRef</h1>
+    <input type="text" ref={useElement} value={name} onChange={(e)=>{setName(e.target.value)}} />
+    <button onClick={reset}>reset</button>
+    <button onClick={changecolor}>change color</button>
+ 
+        </>
     )
 }
 export default Pat;
