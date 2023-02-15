@@ -1,9 +1,14 @@
 import B from "./B";
-import React from "react"
-
+import React,{createContext} from "react"
+const data=createContext()
 function A(props){
+    const name="Rana Abobakar"
     return (
-<B name={props.name} />
+<data.Provider value={name}>
+
+<B />
+</data.Provider>
     )
 }
 export default A;
+export {data};

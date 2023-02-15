@@ -2,7 +2,7 @@ import React from "react"
 import C from './C'
 function B(props){
     return (
-<C name={props.name}/>
+<C />
     )
 }
 export default B;

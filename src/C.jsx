@@ -1,8 +1,18 @@
 import React from "react"
-
+import {data} from "./A"
 function C(props){
     return (
-<h1>hello  {props.name}</h1>
+        <data.Consumer>
+{
+    (name)=>{
+        return (
+            <div>
+                <h1>context api done by {name}</h1>
+            </div>
+        )
+    }
+}
+        </data.Consumer>
     )
 }
 export default C;
