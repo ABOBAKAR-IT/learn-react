@@ -3,7 +3,7 @@ import React,{createContext} from "react"
 const data=createContext()
 const data1=createContext();
 function A(props){
-    const name="Rana Abobakar"
+    const name="RANA ABOBAKAR"
     const gender="Male"
     return (
 <data.Provider value={name}>
