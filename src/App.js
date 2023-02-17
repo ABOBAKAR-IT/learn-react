@@ -1,4 +1,5 @@
-import React,{useMemo, useState } from "react";
+import React,{useCallback, useState } from "react";
+import ChildA from "./ChildA";
 
 
 
@@ -6,23 +7,23 @@ import React,{useMemo, useState } from "react";
 function App(data) {
 
   const [add,setadd]=useState(0)
-  const [minux,setminux]=useState(100)
-const multiplication=useMemo(()=>{
-  console.log(add)
-  return add*10
-},[add])
+  const [count,setcount]=useState(0)
+
+const multiplication=useCallback(()=>{
+ 
+},[count])
   return (
     <>
      <h1>hello</h1>
-     
-     <span>{multiplication}</span>
+<ChildA count={multiplication}/>
+    
      <br/>
+      <h1>{add}</h1>
       <button onClick={()=>{setadd(add+1)}}>add</button>
-      <span>{add}</span>
-    <br/>
-      <button onClick={()=>setminux(minux-1)}>subtraction</button>
-      <span>{minux}</span>
-     
+      <br/>
+      <h1>{count}</h1>
+      <button onClick={()=>{setcount(count+1)}}>count</button>
+   
     </>
   );
 }
