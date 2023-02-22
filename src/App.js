@@ -1,25 +1,18 @@
-import React,{useRef} from "react";
+import React,{useState} from "react";
+import ChildA from './childA'
 import "./style.css"
 function App(){
+const [vname,setvname]=useState()
 
- const refobject=useRef()
-
- function submitdata(e){
-  e.preventDefault();
-  console.log(refobject.current.value)
+ function lifting(name){
+console.log(name)
+setvname(name)
  }
   return(
-    <div id="farmdata">
-<div id="div2">
-    <form onSubmit={submitdata}>
-     
-      <lable>Name</lable>
-      <input type="text" ref={refobject} placeholder="Enter your name" /><br/>
-        
-     <button >submit</button>
-    </form>
-</div>
-    </div>
+   <div>
+    <h2>"{vname}" value received by child A</h2>
+<ChildA getvalue={lifting}/>
+   </div>
   )
 }
 
