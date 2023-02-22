@@ -1,0 +1,22 @@
+#farmdata{
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    text-align: center;
+    border: 1px;
+   /* border-color: blueviolet; */
+
+}
+#farmdata h1{
+    color:aliceblue;
+}
+#div2{
+    /* background-color: aquamarine; */
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    /* text-align: center; */
+    margin: auto;
+    padding: auto;
+}
