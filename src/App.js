@@ -1,29 +1,22 @@
-import React,{useEffect, useState } from "react";
+import React,{useRef} from "react";
 import "./style.css"
 function App(){
 
-  const [name,setname]=useState("")
-  const [password,setpassword]=useState("")
- function setvalue(e)
- {
-  if(e.target.value=='name')
-  {
-    setname(e.target.value)
-  }
-  else{
-    setpassword(e.target.value)
-  }
+ const refobject=useRef()
+
+ function submitdata(e){
+  e.preventDefault();
+  console.log(refobject.current.value)
  }
   return(
     <div id="farmdata">
 <div id="div2">
-    <form>
+    <form onSubmit={submitdata}>
      
       <lable>Name</lable>
-      <input type="text" name="name"  onChange={setvalue} placeholder="Enter your name" /><br></br>
-        <lable>password</lable>
-      <input type="password" name="password" onChange={setvalue} placeholder="Enter your password" />
-      
+      <input type="text" ref={refobject} placeholder="Enter your name" /><br/>
+        
+     <button >submit</button>
     </form>
 </div>
     </div>
