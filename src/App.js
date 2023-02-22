@@ -4,13 +4,13 @@ import "./style.css"
 function App(){
 const [vname,setvname]=useState()
 
- function lifting(name){
-console.log(name)
-setvname(name)
+ function lifting(data){
+console.log(data)
+setvname(data[0])
  }
   return(
    <div>
-    <h2>"{vname}" value received by child A</h2>
+ {vname?<h1 id="r1">{vname} Rigester Successfully</h1>:<></>}
 <ChildA getvalue={lifting}/>
    </div>
   )
