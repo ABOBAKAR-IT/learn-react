@@ -4,16 +4,25 @@ function App(){
 
   const [name,setname]=useState("")
   const [password,setpassword]=useState("")
-
+ function setvalue(e)
+ {
+  if(e.target.value=='name')
+  {
+    setname(e.target.value)
+  }
+  else{
+    setpassword(e.target.value)
+  }
+ }
   return(
     <div id="farmdata">
 <div id="div2">
     <form>
      
       <lable>Name</lable>
-      <input type="text" name="name"  onChange={(e)=>{setname(e.target.value)}} placeholder="Enter your name" /><br></br>
+      <input type="text" name="name"  onChange={setvalue} placeholder="Enter your name" /><br></br>
         <lable>password</lable>
-      <input type="password" name="password" onChange={(e)=>{setpassword(e.target.value)}} placeholder="Enter your password" />
+      <input type="password" name="password" onChange={setvalue} placeholder="Enter your password" />
       
     </form>
 </div>
