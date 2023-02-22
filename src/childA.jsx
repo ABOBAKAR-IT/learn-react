@@ -1,27 +1,35 @@
 import React,{useState} from 'react'
 import "./style.css"
-function ChildA(props){
-  
-    const [name,setname]=useState()
-    const [email,setemail]=useState()
-    const [password,setpassword]=useState()
+function ChildA(){
+  const data={name:"",mail:"",password:""}
+    const [inputdata,setinputdata]=useState(data)
+
+    function handleinput(e){
+     setinputdata({...inputdata,[e.target.name]:e.target.value})
+     console.log(inputdata)
+    }
     
     function submitdata(e){
         e.preventDefault(); // use for prevent html default behavior
-       const alldata=[name,email,password]
-    props.getvalue(alldata)
+   if(!inputdata.name|| !inputdata.mail||!inputdata.password){
+    alert("fill all input")
+   }
+   else{
+
+   }
        }
         return(
           <div id="farmdata">
+        {(inputdata.name&&inputdata.mail&&inputdata.password)?<h1 id='r1'>{inputdata.name} Register successfully</h1>:<></>}
       <div id="div2">
           <form onSubmit={submitdata} id='farmdata'>
            <h1 id='r1'>Registration form </h1>
             <lable>Name</lable>
-            <input type="text" onChange={e=>setname(e.target.value)} required placeholder="Enter your name" /><br/>
+            <input type="text" name="name" onChange={handleinput}  placeholder="Enter your name" /><br/>
             <lable>email</lable>
-            <input type="mail" onChange={e=>setemail(e.target.value)} required placeholder="Enter your email" /><br/>
+            <input type="mail" name="mail" onChange={handleinput}  placeholder="Enter your email" /><br/>
             <lable>password</lable>
-            <input type="password" onChange={e=>setpassword(e.target.value)} required placeholder="Enter your password" /><br/>
+            <input type="password" name="password" onChange={handleinput}  placeholder="Enter your password" /><br/>
              
            <button >submit</button>
           </form>
