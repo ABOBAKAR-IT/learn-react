@@ -5,15 +5,14 @@ function App(){
 
 
 
- const list=["lahore","karachi","multan"]
+ const list=["lahore","karachi","multan","lahore"]
   return(
    <div>
-{list.map((v)=><h1>{v}<br/></h1>)}
+
+ {list.map((v,index)=><h1 key={index}>{v}<br/></h1>)} {/* use key unique for list  */}
    </div>
   )
 }
 
 
 export default App;
-
-// usememo store value of a function .usememo have two parameter first for function second for dependence 
