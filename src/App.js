@@ -1,31 +1,22 @@
-import React,{useCallback, useState } from "react";
-import ChildA from "./ChildA";
+import React,{ useState } from "react";
+
 
 
 
 
 function App(data) {
 
-  const [add,setadd]=useState(0)
-  const [count,setcount]=useState(0)
-
-const multiplication=useCallback(()=>{
- 
-},[count])
-  return (
-    <>
-     <h1>hello</h1>
-<ChildA count={multiplication}/>
-    
-     <br/>
-      <h1>{add}</h1>
-      <button onClick={()=>{setadd(add+1)}}>add</button>
-      <br/>
-      <h1>{count}</h1>
-      <button onClick={()=>{setcount(count+1)}}>count</button>
-   
-    </>
-  );
+const [fullname,setfullname]=useState({fistname:"Rana",lastname:"Abobakar"})
+function changeName(){
+  let name="Raja";
+setfullname({...fullname,fistname:"Raja"}) // use spread operator to edit useState object value
+}
+return (
+  <>
+  <h1>My first name is "{fullname.fistname}" and my last name is "{fullname.lastname}"</h1>
+  <button onClick={changeName}> click me</button>
+  </>
+)
 }
 export default App;
 
