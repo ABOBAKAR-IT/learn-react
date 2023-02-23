@@ -6,16 +6,24 @@ import React,{ useState } from "react";
 
 function App(data) {
 
-const [fullname,setfullname]=useState({fistname:"Rana",lastname:"Abobakar"})
+const [list,setlist]=useState([])
 function changeName(){
-  let name="Raja";
-setfullname({...fullname,fistname:"Raja"}) // use spread operator to edit useState object value
-}
+setlist([...list,{
+  id:list.length,
+  value:Math.random(4)
+}])
+  }
 return (
   <>
-  <h1>My first name is "{fullname.fistname}" and my last name is "{fullname.lastname}"</h1>
-  <button onClick={changeName}> click me</button>
-  </>
+<div>
+  <ol>
+    {list.map(v=>{
+   return <li key={v.id}>{v.value}</li>
+    })}
+  </ol>
+</div>
+  <button onClick={changeName}> add me</button>
+ </>
 )
 }
 export default App;
