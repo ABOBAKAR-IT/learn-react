@@ -1,17 +1,14 @@
-import React,{useState} from "react";
-import ChildA from './childA'
+import React from "react";
+
 import "./style.css"
 function App(){
-const [vname,setvname]=useState()
 
- function lifting(name){
-console.log(name)
-setvname(name)
- }
+
+
+ const list=["lahore","karachi","multan"]
   return(
    <div>
-    <h2>"{vname}" value received by child A</h2>
-<ChildA getvalue={lifting}/>
+{list.map((v)=><h1>{v}<br/></h1>)}
    </div>
   )
 }
