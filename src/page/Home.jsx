@@ -1,21 +1,23 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 function Home(){
-    const navigater1=useNavigate();
-    const navigater2=useNavigate();
+    const navigater=useNavigate();
 
-    function go_to_about(){
-navigater1("/about");
+
+    function go_to_about(e){
+        
+ navigater("/about",{state:{id:e.target.name}});
     }
-    function go_to_info(){
-        navigater2("/info");
-            }
+   
     return (
         <>
         <h1>Home</h1>
-<Link to="/about"><h1>About</h1></Link>
-<button onClick={go_to_info}>Info</button>
-<button onClick={go_to_about}>About</button>
+
+<button onClick={go_to_about} name="1">item 1</button>
+<button onClick={go_to_about} name="2">item 2</button>
+<button onClick={go_to_about} name="3">item 3</button>
+
+
         </>
     )
 }
