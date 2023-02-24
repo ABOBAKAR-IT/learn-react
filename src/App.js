@@ -1,32 +1,12 @@
-import React,{useCallback, useState } from "react";
-import ChildA from "./ChildA";
-
-import "./style.css"
-function App(){
-
-
-
-function App(data) {
-
-  const [add,setadd]=useState(0)
-  const [count,setcount]=useState(0)
-
-const multiplication=useCallback(()=>{
- 
-},[count])
+import React from "react";
+import {Routes,Route} from 'react-router-dom'
+function App() {
   return (
-    <>
-     <h1>hello</h1>
-<ChildA count={multiplication}/>
-    
-     <br/>
-      <h1>{add}</h1>
-      <button onClick={()=>{setadd(add+1)}}>add</button>
-      <br/>
-      <h1>{count}</h1>
-      <button onClick={()=>{setcount(count+1)}}>count</button>
-   
-    </>
-  );
+<Routes>
+  <Route path='/' element={<div>home page</div>}/>
+  <Route path="/about" element={<div>home about</div>}></Route>
+  <Route path="/info" element={<div>home info</div>}></Route>
+</Routes>
+  )
 }
 export default App;
