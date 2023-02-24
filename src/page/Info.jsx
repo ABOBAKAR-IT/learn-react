@@ -3,9 +3,8 @@ import { Link } from "react-router-dom";
 function Info(){
     return (
         <>
-       <Link to="/"><h1>Home</h1></Link>
-<Link to="/about"><h1>About</h1></Link>
-<Link to="/info"><h1>Info</h1></Link>
+<h1>Info page</h1>
+       <Link to="/"><h1>Back</h1></Link>
 
         </>
     )
