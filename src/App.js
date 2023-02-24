@@ -23,30 +23,33 @@ function submit_btn(){
   }
 }
 
-function remove_value(v)
+function remove_value(e)
 {
-  console.log("rmove "+v)
-  const vv =listvalue.map(v1=>{
-   return v1.id!==v
+  console.log("rmove "+e.target.value)
+  const vv =listvalue.filter(v1=>{
+   return v1.id!=e.target.value
   })
 
-  setlistvalue([vv]);
+  setlistvalue(vv);
 }
 
   return (
    <>
-   <div style={{width:"65%",backgroundColor:"#06054b",textAlign:"center",margin:"auto"}}>
-    <div style={{alignItems:'center',backgroundColor:"#06054b"}}>
+   <div style={{width:"65%",backgroundColor:"black",textAlign:"center",margin:"auto",borderRadius:"15px"}}>
+    <div style={{alignItems:'center',backgroundColor:"#06054b",borderRadius:"15px",borderRadius:"15px"}}>
 <h1 style={{color:"white"}}>ToDo List</h1>
 <div >
  {listvalue.map(v=>{
-  return <> <h3 key={v.id} style={{display:"inline",backgroundColor:"#9fc8f0",color:"black", padding:"4px",borderRadius:"3px"}}>{v.value} {v.id}</h3>
-  <button onClick={remove_value(v.id)} style={{margin:"10px",backgroundColor:"#479f51",padding:"5px",borderRadius:"3px"}}>Remove</button><br/></>
+  return <> <h3 key={v.id} style={{display:"inline",backgroundColor:"#9fc8f0",color:"black", padding:"4px",borderRadius:"3px"}}>{v.value}</h3>
+  <button onClick={remove_value} value={v.id} style={{margin:"10px",backgroundColor:"#479f51",padding:"5px",borderRadius:"3px"}}>Remove</button><br/></>
  })}
 </div>
 <div>
   <input style={{display:"inline"}} name="list" value={v} onChange={control_list}></input>
-  <button style={{margin:"10px",backgroundColor:"#479f51"}} onClick={submit_btn}>Add List</button>
+  <button style={{margin:"10px",backgroundColor:"#479f51",padding:"5px",borderRadius:"3px"}} onClick={submit_btn}>Add List</button>
+</div>
+<div>
+  <button onClick={(e)=>{setlistvalue([])}} style={{margin:"10px",backgroundColor:"#479f51",padding:"5px",borderRadius:"3px"}}>Delete</button>
 </div>
     </div>
    </div>
