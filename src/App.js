@@ -1,32 +1,34 @@
-import React,{useCallback, useState } from "react";
-import ChildA from "./ChildA";
+import React, { useState } from 'react';
+import { Button } from '@mui/material';
+import Loader from './Loader';
+import axios from 'axios'
+function App() {
+  const [loading, setLoading] = useState(false);
+  
+  const handleAPICall = () => {
+    setLoading(true);
+    axios.get('https://jsonplaceholder.typicode.com/todos/1')
+      .then(response => {
+        // Handle the API response here
+        console.log(response.data);
+        setLoading(false);
+      })
+      .catch(error => {
+        // Handle any errors here
+        console.error(error);
+        setLoading(false);
+      });
+  };
 
-import "./style.css"
-function App(){
-
-
-
-function App(data) {
-
-  const [add,setadd]=useState(0)
-  const [count,setcount]=useState(0)
-
-const multiplication=useCallback(()=>{
- 
-},[count])
   return (
-    <>
-     <h1>hello</h1>
-<ChildA count={multiplication}/>
-    
-     <br/>
-      <h1>{add}</h1>
-      <button onClick={()=>{setadd(add+1)}}>add</button>
-      <br/>
-      <h1>{count}</h1>
-      <button onClick={()=>{setcount(count+1)}}>count</button>
-   
-    </>
+    <div>
+      <Button variant="contained" onClick={handleAPICall}>
+        Call API
+      </Button>
+     <Loader loading={loading} />
+      {/* Rest of your component */}
+    </div>
   );
 }
+
 export default App;
