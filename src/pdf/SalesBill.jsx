@@ -91,7 +91,9 @@ const SalesBillDocument = ({ billData }) => (
         <Text>{billData.invoiceDate}</Text>
         <Text>{billData.dueDate}</Text>
       </View>
-      <View style={styles.section}>
+
+     <View style={{display:"flex",flexDirection: 'row'}}>
+     <View style={[styles.section, { marginRight: 200 }]}>
         <Text>{billData.name}</Text>
         <Text>{billData.companyAddress}</Text>
         <Text>{billData.cityStateZip}</Text>
@@ -104,6 +106,7 @@ const SalesBillDocument = ({ billData }) => (
         <Text>{billData.cityStateZip}</Text>
         <Text>{billData.country}</Text>
       </View>
+     </View>
      
       <View style={styles.section}>
         <View style={styles.table}>
