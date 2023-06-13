@@ -1,6 +1,6 @@
 import React from 'react';
-import { Page, Document, StyleSheet, Text, View, PDFDownloadLink } from '@react-pdf/renderer';
-
+import { Page, Document, StyleSheet, Text, View, PDFDownloadLink, Image } from '@react-pdf/renderer';
+import logo from './logo512.png'
 // Create styles
 const styles = StyleSheet.create({
   page: {
@@ -9,6 +9,11 @@ const styles = StyleSheet.create({
     padding: 20
   },
   section: {
+    marginBottom: 10
+  },
+  logo: {
+    width: 100,
+    height: 100,
     marginBottom: 10
   },
   title: {
@@ -86,28 +91,33 @@ const SalesBillDocument = ({ billData }) => (
       <View style={styles.section}>
         <Text style={styles.title}>Sales Bill</Text>
       </View>
+     <View style={{display:"flex",flexDirection: 'row'}}>
+     <View style={[styles.section, { marginRight: 200 }]}>
+        <Image src={logo} style={styles.logo} />
+      </View>
       <View style={styles.section}>
         <Text>{billData.invoiceNumber}</Text>
         <Text>{billData.invoiceDate}</Text>
         <Text>{billData.dueDate}</Text>
       </View>
-
-     <View style={{display:"flex",flexDirection: 'row'}}>
-     <View style={[styles.section, { marginRight: 200 }]}>
-        <Text>{billData.name}</Text>
-        <Text>{billData.companyAddress}</Text>
-        <Text>{billData.cityStateZip}</Text>
-        <Text>{billData.country}</Text>
-      </View>
-      <View style={styles.section}>
-        <Text>Bill To:</Text>
-        <Text>{billData.clientCompany}</Text>
-        <Text>{billData.clientAddress}</Text>
-        <Text>{billData.cityStateZip}</Text>
-        <Text>{billData.country}</Text>
-      </View>
      </View>
-     
+
+      <View style={{display:"flex",flexDirection: 'row'}}>
+        <View style={[styles.section, { marginRight: 200 }]}>
+          <Text>{billData.name}</Text>
+          <Text>{billData.companyAddress}</Text>
+          <Text>{billData.cityStateZip}</Text>
+          <Text>{billData.country}</Text>
+        </View>
+        <View style={styles.section}>
+          <Text>Bill To:</Text>
+          <Text>{billData.clientCompany}</Text>
+          <Text>{billData.clientAddress}</Text>
+          <Text>{billData.cityStateZip}</Text>
+          <Text>{billData.country}</Text>
+        </View>
+      </View>
+
       <View style={styles.section}>
         <View style={styles.table}>
           <View style={styles.tableRow}>
