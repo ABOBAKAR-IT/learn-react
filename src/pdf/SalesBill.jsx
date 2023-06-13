@@ -14,7 +14,6 @@ const styles = StyleSheet.create({
   logo: {
     width: 100,
     height: 100,
-    marginBottom: 10
   },
   title: {
     fontSize: 24,
@@ -68,7 +67,7 @@ const SalesBill = () => {
     invoiceDateValue: 'Jun 13, 2023',
     dueDateValue: 'Jun 13, 2023',
     products: [
-      { description: 'Brochure Design', qty: 2, rate: 100.0, amount: 200.0 }
+      { description: 'Brochure Design', pic:logo,qty: 2, rate: 100.0, amount: 200.0 }
     ]
   };
 
@@ -121,14 +120,16 @@ const SalesBillDocument = ({ billData }) => (
       <View style={styles.section}>
         <View style={styles.table}>
           <View style={styles.tableRow}>
-            <Text style={styles.tableCell}>{billData.itemDescription}</Text>
-            <Text style={styles.tableCell}>{billData.qty}</Text>
-            <Text style={styles.tableCell}>{billData.rate}</Text>
-            <Text style={styles.tableCell}>{billData.amount}</Text>
+            <Text style={styles.tableCell}>Item Name</Text>
+            <Text style={styles.tableCell}>Picture</Text>
+            <Text style={styles.tableCell}>Quantity</Text>
+            <Text style={styles.tableCell}>Rate</Text>
+            <Text style={styles.tableCell}>Total Amount</Text>
           </View>
           {billData.products.map((product, index) => (
             <View key={index} style={styles.tableRow}>
               <Text style={styles.tableCell}>{product.description}</Text>
+              <Image src={logo} style={[styles.tableCell,styles.logo]} />
               <Text style={styles.tableCell}>{product.qty}</Text>
               <Text style={styles.tableCell}>{product.rate}</Text>
               <Text style={styles.tableCell}>{product.amount}</Text>
