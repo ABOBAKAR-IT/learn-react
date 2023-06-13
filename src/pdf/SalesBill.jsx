@@ -25,24 +25,59 @@ const styles = StyleSheet.create({
     fontSize: 12,
     marginBottom: 5
   },
-  total: {
-    fontSize: 16,
-    fontWeight: 'bold',
-    marginTop: 10
+  table: {
+    display: 'table',
+    width: '100%',
+    marginBottom: 10
+  },
+  tableRow: {
+    flexDirection: 'row'
+  },
+  tableCell: {
+    borderBottomColor: '#000',
+    borderBottomWidth: 1,
+    alignItems: 'center',
+    padding: 5,
+    flex: 1
   }
 });
 
 // Create the SalesBill component
-const SalesBill = ({ billData }) => (
-  <div>
-    <h1>Sales Bill</h1>
-    <PDFDownloadLink document={<SalesBillDocument billData={billData} />} fileName="sales_bill.pdf">
-      {({ blob, url, loading, error }) =>
-        loading ? 'Loading document...' : 'Download Sales Bill'
-      }
-    </PDFDownloadLink>
-  </div>
-);
+const SalesBill = () => {
+  const billData = {
+    companyName: 'Your Company',
+    name: 'Your Name',
+    companyAddress: 'Company’s Address',
+    cityStateZip: 'City, State Zip',
+    country: 'Country',
+    clientCompany: 'Your Client’s Company',
+    clientAddress: 'Client’s Address',
+    invoiceNumber: 'Invoice#',
+    invoiceDate: 'Invoice Date',
+    dueDate: 'Due Date',
+    itemDescription: 'Item Description',
+    qty: 'Qty',
+    rate: 'Rate',
+    amount: 'Amount',
+    invoiceNo: 'INV-12',
+    invoiceDateValue: 'Jun 13, 2023',
+    dueDateValue: 'Jun 13, 2023',
+    products: [
+      { description: 'Brochure Design', qty: 2, rate: 100.0, amount: 200.0 }
+    ]
+  };
+
+  return (
+    <div>
+      <h1>Sales Bill</h1>
+      <PDFDownloadLink document={<SalesBillDocument billData={billData} />} fileName="sales_bill.pdf">
+        {({ blob, url, loading, error }) =>
+          loading ? 'Loading document...' : 'Download Sales Bill'
+        }
+      </PDFDownloadLink>
+    </div>
+  );
+};
 
 // Create the SalesBillDocument component
 const SalesBillDocument = ({ billData }) => (
@@ -52,22 +87,41 @@ const SalesBillDocument = ({ billData }) => (
         <Text style={styles.title}>Sales Bill</Text>
       </View>
       <View style={styles.section}>
-        <Text style={styles.subtitle}>Customer Details:</Text>
-        <Text style={styles.text}>Name: {billData.customerName}</Text>
-        <Text style={styles.text}>Email: {billData.customerEmail}</Text>
-        <Text style={styles.text}>Phone: {billData.customerPhone}</Text>
+        <Text>{billData.invoiceNumber}</Text>
+        <Text>{billData.invoiceDate}</Text>
+        <Text>{billData.dueDate}</Text>
       </View>
       <View style={styles.section}>
-        <Text style={styles.subtitle}>Products:</Text>
-        {billData.products.map((product, index) => (
-          <View key={index}>
-            <Text style={styles.text}>Product: {product.name}</Text>
-            <Text style={styles.text}>Price: {product.price}</Text>
+        <Text>{billData.name}</Text>
+        <Text>{billData.companyAddress}</Text>
+        <Text>{billData.cityStateZip}</Text>
+        <Text>{billData.country}</Text>
+      </View>
+      <View style={styles.section}>
+        <Text>Bill To:</Text>
+        <Text>{billData.clientCompany}</Text>
+        <Text>{billData.clientAddress}</Text>
+        <Text>{billData.cityStateZip}</Text>
+        <Text>{billData.country}</Text>
+      </View>
+     
+      <View style={styles.section}>
+        <View style={styles.table}>
+          <View style={styles.tableRow}>
+            <Text style={styles.tableCell}>{billData.itemDescription}</Text>
+            <Text style={styles.tableCell}>{billData.qty}</Text>
+            <Text style={styles.tableCell}>{billData.rate}</Text>
+            <Text style={styles.tableCell}>{billData.amount}</Text>
           </View>
-        ))}
-      </View>
-      <View style={styles.section}>
-        <Text style={styles.total}>Total: {billData.total}</Text>
+          {billData.products.map((product, index) => (
+            <View key={index} style={styles.tableRow}>
+              <Text style={styles.tableCell}>{product.description}</Text>
+              <Text style={styles.tableCell}>{product.qty}</Text>
+              <Text style={styles.tableCell}>{product.rate}</Text>
+              <Text style={styles.tableCell}>{product.amount}</Text>
+            </View>
+          ))}
+        </View>
       </View>
     </Page>
   </Document>
